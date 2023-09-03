@@ -60,6 +60,7 @@ button:hover {
 .project-list {
 }
 
+
 .project-item {
   width: fit-content;
   padding: 0.2rem;
@@ -78,6 +79,12 @@ button:hover {
 .project-detail-item {
 }
 .project-detail-deadline {
+}
+.project-update {
+  width: fit-content;
+  padding: 0.2rem;
+  margin-block: 1rem;
+  border: solid 2px red;
 }
 .todo-list {
 }
