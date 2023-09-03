@@ -1,0 +1,100 @@
+* {
+  /* border: black 1px solid; */
+}
+
+/* Reset some default styles for a clean slate */
+body,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Apply a sans-serif font to the entire document */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: var(--watermelon-green);
+  color: white;
+  padding: 1rem;
+}
+
+/* Define watermelon color variables */
+:root {
+  --watermelon-pink: #ff6b6b;
+  --watermelon-green: #70c1b3;
+}
+
+/* Apply watermelon colors to specific elements */
+.header {
+  background-color: var(--watermelon-pink);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Style lists with no decoration */
+ul {
+  list-style: none;
+}
+
+/* Style links with watermelon colors and remove underlines */
+a {
+  color: var(--watermelon-green);
+  text-decoration: none;
+}
+
+/* Style buttons with watermelon colors */
+button {
+  background-color: var(--watermelon-green);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Add hover effect to buttons */
+button:hover {
+  background-color: #4eac94; /* A slightly darker shade of green on hover */
+}
+
+.project-list {
+}
+
+.project-item {
+  width: fit-content;
+  padding: 0.2rem;
+  margin-block: 1rem;
+  border: solid 2px green;
+}
+
+.project-name {
+  margin-left: 1rem;
+  margin-block: 0;
+}
+
+.project-details-list {
+  margin-left: 1.5rem;
+}
+.project-detail-item {
+}
+.project-detail-deadline {
+}
+.todo-list {
+}
+.todo-details {
+  width: fit-content;
+  padding: 0.2rem;
+  margin-block: 1rem;
+  border: solid 2px red;
+}
+.todo-name {
+}
+.todo-deadline {
+  margin-left: 0.5rem;
+}
+.todo-complete {
+  margin-left: 0.5rem;
+}
+.todo-created {
+  margin-left: 0.5rem;
+}
