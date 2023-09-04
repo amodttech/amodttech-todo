@@ -86,13 +86,19 @@ button:hover {
   margin-block: 1rem;
   border: solid 2px red;
 }
+.todo-new-form {
+  width: fit-content;
+  padding: 0.2rem;
+  margin-block: 1rem;
+  border: solid 2px purple;
+}
 .todo-list {
 }
 .todo-details {
   width: fit-content;
   padding: 0.2rem;
   margin-block: 1rem;
-  border: solid 2px red;
+  border: solid 2px yellow;
 }
 .todo-name {
 }

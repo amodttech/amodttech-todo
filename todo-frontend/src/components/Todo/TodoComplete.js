@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import { BACKEND } from "../../utilities/helpers";
 
@@ -7,13 +7,27 @@ function TodoComplete({ todo, project, projects, setProjects }) {
     e.preventDefault();
 
     try {
-      // Send a POST request to your backend to create a new project
-      const response = await axios.delete(
-        `${BACKEND}/${project.id}/todos/${todo.id}`
-      ); // Adjust the URL as needed
-      console.log("todo deleted:", response.data);
-      setProjects([...projects, response.data]);
-      // Clear the form after successful submission
+      // Send a DELETE request to your backend to delete the todo
+      await axios.delete(`${BACKEND}/${project.id}/todos/${todo.id}`);
+
+      // Update the projects array by filtering out the deleted todo
+      const updatedProjects = projects.map((p) => {
+        if (p.id === project.id) {
+          // Clone the project object to avoid modifying the original
+          const updatedProject = { ...p };
+          // Filter out the deleted todo from the todos array
+          updatedProject.todos = updatedProject.todos.filter(
+            (t) => t.id !== todo.id
+          );
+          return updatedProject;
+        }
+        return p;
+      });
+
+      // Update the state with the updated projects array
+      setProjects(updatedProjects);
+
+      console.log("Todo deleted successfully.");
     } catch (error) {
       console.error("Error deleting todo:", error);
     }

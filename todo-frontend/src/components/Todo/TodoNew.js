@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { BACKEND } from "../../utilities/helpers";
+import { BACKEND, updateProjectTodos } from "../../utilities/helpers";
 
 /*
 name
@@ -34,14 +34,20 @@ function TodoNew({ project, projects, setProjects }) {
 
     try {
       // Send a POST request to your backend to create a new project
-      const response = await axios.post(`${BACKEND}/${project.id}/todos`, todoData); // Adjust the URL as needed
+      const response = await axios.post(
+        `${BACKEND}/${project.id}/todos`,
+        todoData
+      ); // Adjust the URL as needed
       console.log("New todo created:", response.data);
-      setProjects([...projects, response.data]);
+      console.log('new todo projects (before)', projects)
+      // setProjects([...projects, response.data]);
+      updateProjectTodos(response.data, project,projects, setProjects)
+      console.log('new todo projects (after)', projects)
       // Clear the form after successful submission
       setTodoData({
         name: "",
         deadline: "",
-        priority: ""
+        priority: "",
       });
     } catch (error) {
       console.error("Error creating todo:", error);
@@ -49,8 +55,7 @@ function TodoNew({ project, projects, setProjects }) {
   };
 
   return (
-    <div>
-      <h2>Create a New Todo</h2>
+    <div className="todo-new-form">
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Todo Name:</label>
@@ -70,6 +75,19 @@ function TodoNew({ project, projects, setProjects }) {
             id="deadline"
             name="deadline"
             value={todoData.deadline}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="priority">Priority:</label>
+          <input
+            type="number"
+            min="1"
+            max="5"
+            id="priority"
+            name="priority"
+            value={todoData.priority}
             onChange={handleChange}
             required
           />
