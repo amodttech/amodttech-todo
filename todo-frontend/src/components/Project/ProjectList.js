@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Project from "./Project";
-import { BACKEND } from "../utilities/helpers";
+import { BACKEND } from "../../utilities/helpers";
 
 const ProjectList = ({setProjects, projects}) => {
   
@@ -26,7 +26,7 @@ const ProjectList = ({setProjects, projects}) => {
       <h1>Project List</h1>
       <ul className="project-list">
         {projects.map((project) => (
-          <Project project={project} setProjects={setProjects} projects={projects}/>
+          <Project key={project.id} project={project} setProjects={setProjects} projects={projects}/>
         ))}
       </ul>
     </div>

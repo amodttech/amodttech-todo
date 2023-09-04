@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { BACKEND } from "../utilities/helpers";
+import { BACKEND } from "../../utilities/helpers";
 
 function ProjectDelete({ project, projects, setProjects }) {
   const handleClick = async (e) => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { BACKEND, onUpdateProject } from "../utilities/helpers";
+import { BACKEND, onUpdateProject } from "../../utilities/helpers";
 
 function ProjectUpdate({ project, setProjects, projects }) {
   const [updatedProject, setUpdatedProject] = useState({
@@ -36,10 +36,8 @@ function ProjectUpdate({ project, setProjects, projects }) {
 
   return (
     <div className="project-update">
-      <p>Update Project</p>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Project Name:</label>
           <input
             type="text"
             id="name"
@@ -50,7 +48,6 @@ function ProjectUpdate({ project, setProjects, projects }) {
           />
         </div>
         <div>
-          <label htmlFor="deadline">Deadline:</label>
           <input
             type="date"
             id="deadline"

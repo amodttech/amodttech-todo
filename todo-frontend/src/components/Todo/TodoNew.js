@@ -1,17 +1,30 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { BACKEND } from "../utilities/helpers";
+import { BACKEND } from "../../utilities/helpers";
 
-const NewProject = ({ setProjects, projects }) => {
-  const [projectData, setProjectData] = useState({
+/*
+name
+deadline
+priority
+complete
+project_id
+created_at
+updated_at
+*/
+
+function TodoNew({ project, projects, setProjects }) {
+  const [todoData, setTodoData] = useState({
     name: "",
     deadline: "",
+    priority: "",
+    complete: false,
+    project_id: project.id,
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProjectData({
-      ...projectData,
+    setTodoData({
+      ...todoData,
       [name]: value,
     });
   };
@@ -21,30 +34,31 @@ const NewProject = ({ setProjects, projects }) => {
 
     try {
       // Send a POST request to your backend to create a new project
-      const response = await axios.post(BACKEND, projectData); // Adjust the URL as needed
-      console.log("New project created:", response.data);
+      const response = await axios.post(`${BACKEND}/${project.id}/todos`, todoData); // Adjust the URL as needed
+      console.log("New todo created:", response.data);
       setProjects([...projects, response.data]);
       // Clear the form after successful submission
-      setProjectData({
+      setTodoData({
         name: "",
         deadline: "",
+        priority: ""
       });
     } catch (error) {
-      console.error("Error creating project:", error);
+      console.error("Error creating todo:", error);
     }
   };
 
   return (
     <div>
-      <h2>Create a New Project</h2>
+      <h2>Create a New Todo</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Project Name:</label>
+          <label htmlFor="name">Todo Name:</label>
           <input
             type="text"
             id="name"
             name="name"
-            value={projectData.name}
+            value={todoData.name}
             onChange={handleChange}
             required
           />
@@ -55,7 +69,7 @@ const NewProject = ({ setProjects, projects }) => {
             type="date"
             id="deadline"
             name="deadline"
-            value={projectData.deadline}
+            value={todoData.deadline}
             onChange={handleChange}
             required
           />
@@ -64,6 +78,6 @@ const NewProject = ({ setProjects, projects }) => {
       </form>
     </div>
   );
-};
+}
 
-export default NewProject;
+export default TodoNew;

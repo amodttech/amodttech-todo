@@ -1,5 +1,5 @@
 import React from "react";
-import { dateParser } from "../utilities/helpers";
+import { dateParser } from "../../utilities/helpers";
 import TodoComplete from "./TodoComplete";
 
 function Todo({ todo, project, projects, setProjects }) {

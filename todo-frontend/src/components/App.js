@@ -1,6 +1,6 @@
 // Example using react-router-dom
-import NewProject from "./NewProject";
-import ProjectList from "./ProjectList";
+import ProjectNew from "./Project/ProjectNew";
+import ProjectList from "./Project/ProjectList";
 import React, { useState } from "react";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="App">
-      <NewProject projects={projects} setProjects={setProjects} />
+      <ProjectNew projects={projects} setProjects={setProjects} />
       <ProjectList projects={projects} setProjects={setProjects} />
     </div>
   );
